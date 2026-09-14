@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "mata-investisseurs-dev",
+      "runtimeExecutable": "cmd.exe",
+      "runtimeArgs": ["/c", "C:\\Claude\\mata-investisseurs\\dev-server.cmd"],
+      "port": 3000
+    }
+  ]
+}

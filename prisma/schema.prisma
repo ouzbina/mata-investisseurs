@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model InvestorResponse {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+
+  firstName String
+  lastName  String
+
+  // Q1 - risque de perte
+  riskAccepted Boolean
+
+  // Q2 - positionnement officiel (A-F, choix multiples)
+  positions    String[]
+  exitTimeline String? // si "D" selectionne
+
+  // Q3 - trajectoire recommandee
+  trajectory String // bootstrap | restructurer | rien
+
+  // Q4 - integration Mata Trading/Prod + creances historiques
+  tradingProdIntegration String // oui | non | reserves
+
+  // Q5 - bareme propose (si Q4 = oui)
+  bareme String?
+
+  // Q6 - structure SPV 65/35
+  spvAgreement String // oui | non | reserves
+
+  // Q7 - securisation immediate (~33,5 M F)
+  securisationContribution String // oui | non | a_discuter
+  securisationMontant      Float?
+
+  // Q8 - comite de pilotage
+  comitePilotage Boolean
+
+  // Q9 - strategie de croissance
+  strategieCroissance String // bootstrap | levee | les_deux | sans_opinion
+
+  // Q10 - remarques libres
+  remarques String?
+
+  @@map("investor_responses")
+}
